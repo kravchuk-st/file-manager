@@ -1,7 +1,7 @@
 import { Transform } from "stream";
 import { cwd } from "process";
 import { EOL } from "os";
-import {  } from './handlers/index.js';
+import { up, cd, ls } from './handlers/index.js';
 import { errorHandle } from './helpers/errorHandler.js';
 
 export const commands = new Transform({
@@ -12,6 +12,15 @@ export const commands = new Transform({
       switch (command) {
         case ".exit":
           process.exit();
+        case "up":
+          up();
+          break;
+        case "cd":
+          cd(...args);
+          break;
+        case 'ls':
+          ls();
+          break;
         default:
           console.error(EOL + `Invalid input: unsupported command ${command}`);
       }
