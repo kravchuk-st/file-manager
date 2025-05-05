@@ -1,7 +1,7 @@
 import { Transform } from "stream";
 import { cwd } from "process";
 import { EOL } from "os";
-import { up, cd, ls, cat, add, mkdir, rn, cp, mv, rm, osInfo } from "./handlers/index.js";
+import { up, cd, ls, cat, add, mkdir, rn, cp, mv, rm, osInfo, hash } from "./handlers/index.js";
 import { errorHandle } from "./helpers/errorHandler.js";
 
 export const commands = new Transform({
@@ -43,9 +43,12 @@ export const commands = new Transform({
           await rm(...args);
           break;
         case "os":
-          args.forEach(i => {
+          args.forEach((i) => {
             osInfo(i);
           });
+          break;
+        case "hash":
+          await hash(...args);
           break;
         default:
           console.error(EOL + `Invalid input: unsupported command ${command}`);
