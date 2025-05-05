@@ -1,0 +1,25 @@
+{
+  "name": "nodejs-file-manager",
+  "version": "1.0.0",
+  "description": "",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kravchuk-st/file-manager.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "kravchuk-st",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kravchuk-st/file-manager/issues"
+  },
+  "homepage": "https://github.com/kravchuk-st/file-manager#readme"
+}
