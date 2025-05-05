@@ -1,7 +1,7 @@
 import { Transform } from "stream";
 import { cwd } from "process";
 import { EOL } from "os";
-import { up, cd, ls, cat, add, mkdir, rn, cp, mv, rm, osInfo, hash } from "./handlers/index.js";
+import { up, cd, ls, cat, add, mkdir, rn, cp, mv, rm, osInfo, hash, compress, decompress } from "./handlers/index.js";
 import { errorHandle } from "./helpers/errorHandler.js";
 
 export const commands = new Transform({
@@ -49,6 +49,12 @@ export const commands = new Transform({
           break;
         case "hash":
           await hash(...args);
+          break;
+        case "compress":
+          await compress(...args);
+          break;
+        case "decompress":
+          await decompress(...args);
           break;
         default:
           console.error(EOL + `Invalid input: unsupported command ${command}`);
