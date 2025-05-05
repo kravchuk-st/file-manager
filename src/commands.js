@@ -1,8 +1,8 @@
 import { Transform } from "stream";
 import { cwd } from "process";
 import { EOL } from "os";
-import { up, cd, ls } from './handlers/index.js';
-import { errorHandle } from './helpers/errorHandler.js';
+import { up, cd, ls, cat, add, mkdir, rn, cp, mv, rm } from "./handlers/index.js";
+import { errorHandle } from "./helpers/errorHandler.js";
 
 export const commands = new Transform({
   async transform(chunk, encoding, callback) {
@@ -18,8 +18,29 @@ export const commands = new Transform({
         case "cd":
           cd(...args);
           break;
-        case 'ls':
+        case "ls":
           ls();
+          break;
+        case "cat":
+          await cat(...args);
+          break;
+        case "add":
+          await add(...args);
+          break;
+        case "mkdir":
+          await mkdir(...args);
+          break;
+        case "rn":
+          await rn(...args);
+          break;
+        case "cp":
+          await cp(...args);
+          break;
+        case "mv":
+          await mv(...args);
+          break;
+        case "rm":
+          await rm(...args);
           break;
         default:
           console.error(EOL + `Invalid input: unsupported command ${command}`);
